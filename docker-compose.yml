@@ -1,0 +1,49 @@
+services:
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        container_name: licencias_app
+        restart: unless-stopped
+        tty: true
+        ports:
+            - '8086:80'
+            - '3011:3000'
+            - '8085:8080'
+            - '8087:8000'
+        volumes:
+            - ./:/var/www
+            - ./storage:/var/www/storage
+            - ./node_modules:/var/www/node_modules
+            - ./nginx.conf:/etc/nginx/sites-enabled/nginx.conf
+        environment:
+            - APP_ENV=local
+            - APP_DEBUG=true
+
+    db:
+        image: postgres:13-alpine
+        container_name: licencias_db
+        restart: unless-stopped
+        ports:
+            - '5435:5432'
+        environment:
+            POSTGRES_DB: rrhh
+            POSTGRES_USER: root
+            POSTGRES_PASSWORD: root
+        volumes:
+            - pgdata:/var/lib/postgresql/data
+            - ./rrhh.backup:/var/lib/postgresql/rrhh.backup
+    pgadmin:
+        image: dpage/pgadmin4
+        container_name: pgadmin
+        environment:
+            PGADMIN_DEFAULT_EMAIL: user@example.com
+            PGADMIN_DEFAULT_PASSWORD: root
+        volumes:
+            - ./rrhh.backup:/var/lib/pgadmin/storage/rrhh.backup
+        ports:
+            - '5050:80'
+        depends_on:
+            - db
+volumes:
+    pgdata:

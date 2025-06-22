@@ -1,0 +1,35 @@
+{
+    "routePrefix": "api.cargo-tipo-horario",
+    "crtNo": true,
+    "comparisonOperator": "LIKE",
+    "cache": true,
+    "buttons": [
+        {
+            "type" : "row",
+            "icon": "bell",
+            "class": "has-text-purple",
+            "event": "custom",
+            "label" : "texto boton",
+            "confirmation" : true,
+            "message" : "un mensaje"
+
+        },
+        {
+            "type" : "global",
+            "icon": "bell",
+            "class": "has-text-purple"
+        }
+    ],
+    "columns": [{
+        "label": "ID",
+        "name": "idcargo_tipo_horario",
+        "data": "idcargo_tipo_horario",
+        "meta": ["sortable"]
+    },{
+        "label": "Nombre del Tipo Horario",
+        "name": "tipohorario",
+        "data": "tipohorario",
+        "meta": ["searchable", "sortable"]
+    }
+    ]
+}

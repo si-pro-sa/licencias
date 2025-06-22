@@ -1,0 +1,2 @@
+SELECT permission_id, role_id, team_id, rr.name, rr.display_name, pp.name 
+	FROM sistema.permissions as pp left join sistema.permission_role as rp on pp.id = rp.permission_id inner join sistema.roles as rr on rr.id=rp.role_id where rp.team_id = 5 and rp.role_id=3;

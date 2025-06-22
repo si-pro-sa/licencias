@@ -1,0 +1,42 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "vuejs: chrome",
+            "breakOnLoad": true,
+            "url": "http://localhost:8000",
+            "webRoot": "${workspaceFolder}/public",
+            "sourceMapPathOverrides": {
+                "webpack:///./resources/js/*.vue": "${workspaceFolder}/public/js/*.vue",
+                "webpack:///./resources/js/*.js": "${workspaceFolder}/public/js/*.js",
+                "webpack:///./node_modules/*": "${workspaceFolder}/public/node_modules/*"
+            }
+        },
+        {
+            "type": "firefox",
+            "request": "launch",
+            "name": "vuejs: firefox",
+            "url": "http://localhost:8000",
+            "webRoot": "${workspaceFolder}/public",
+            "pathMappings": [
+                {
+                    "url": "webpack:///./resources/js",
+                    "path": "${webRoot}/js"
+                }
+            ]
+        },
+        {
+            "name": "Launch",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:8000",
+            "webRoot": "${workspaceRoot}",
+            "sourceMaps": true,
+            "runtimeArgs": [
+                "--remote-debugging-port=9222"
+            ]
+        }
+    ]
+}

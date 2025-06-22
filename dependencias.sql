@@ -1,0 +1,2 @@
+SELECT iddependencia, dependencia, idtipo_dependencia, usuario, operacion, foperacion, codigo, codigorrhh, jerarquia, redservicio
+	FROM public.dependencia where iddependencia in (1155,2587,2588,2589,2590,2591,2593,2595,2596,2592,2594);
