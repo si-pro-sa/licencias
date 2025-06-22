@@ -1,0 +1,7 @@
+{
+    "include": ["resources/**/*"],
+    "compilerOptions": {
+        "baseUrl": "http://localhost:8000",
+        "paths": { "components": ["*", "components/*"] }
+    }
+}

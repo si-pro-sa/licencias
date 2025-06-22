@@ -1,0 +1,35 @@
+{
+    "routePrefix": "api.cargo-dias-guardia",
+    "crtNo": true,
+    "comparisonOperator": "LIKE",
+    "cache": true,
+    "buttons": [
+        {
+            "type" : "row",
+            "icon": "bell",
+            "class": "has-text-purple",
+            "event": "custom",
+            "label" : "texto boton",
+            "confirmation" : true,
+            "message" : "un mensaje"
+
+        },
+        {
+            "type" : "global",
+            "icon": "bell",
+            "class": "has-text-purple"
+        }
+    ],
+    "columns": [{
+        "label": "ID",
+        "name": "idcargo_diar_guardia",
+        "data": "idcargo_diar_guardia",
+        "meta": ["sortable"]
+    },{
+        "label": "Nombre Dia Guardia",
+        "name": "cargodiasguardia",
+        "data": "cargodiasguardia",
+        "meta": ["searchable", "sortable"]
+    }
+    ]
+}

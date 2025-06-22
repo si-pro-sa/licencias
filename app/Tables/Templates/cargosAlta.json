@@ -1,0 +1,85 @@
+{
+    "routePrefix": "api.cargos",
+    "crtNo": true,
+    "comparisonOperator": "LIKE",
+    "cache": true,
+    "buttons": [
+        {
+            "type" : "row",
+            "icon": "bell",
+            "class": "has-text-purple",
+            "event": "custom",
+            "label" : "texto boton",
+            "confirmation" : true,
+            "message" : "un mensaje"
+
+        },
+        {
+            "type" : "global",
+            "icon": "bell",
+            "class": "has-text-purple"
+        }
+    ],
+    "columns": [{
+        "label": "Tipo de Cargo",
+        "name": "tipocargo",
+        "data": "tipo_cargo",
+        "meta": ["searchable", "sortable"]
+    },{
+        "label": "Función",
+        "name": "tipofuncion",
+        "data": "tipo_funcion.tipofuncion",
+        "meta": ["searchable", "sortable"]
+    },{
+        "label": "Dependencia",
+        "name": "dependencia",
+        "data": "dependencia.dependencia",
+        "meta": ["searchable", "sortable"]
+    },{
+        "label": "DETALLE DEL SERVICIO DE EFECTIVO CUMPLIMIENTO",
+        "name": "detalle1",
+        "data": "detalle1",
+        "meta": ["searchable", "sortable"]
+    },{
+        "label": "Titular",
+        "name": "agente_reemplazado",
+        "data": "agente_reemplazado.apellido,agente_reemplazado.nombre",
+        "meta": ["searchable", "sortable"]
+    },{
+        "label": "DNI Titular",
+        "name": "agente_reemplazado_dni",
+        "data": "agente_reemplazado.documento",
+        "meta": ["searchable", "sortable"]
+    },{
+        "label": "Motivo/Tipo Cese",
+        "name": "tipocese",
+        "data": "tipo_cese.tipocese",
+        "meta": ["searchable", "sortable"]
+    },{
+        "label": "Reemplazante",
+        "name": "agente_reemplazante",
+        "data": "agente_reemplazante.apellido,agente_reemplazante.nombre",
+        "meta": ["searchable", "sortable"]
+    },{
+        "label": "DNI Reemplazante",
+        "name": "agente_reemplazante_dni",
+        "data": "agente_reemplazante.documento",
+        "meta": ["searchable", "sortable"]
+    },{
+        "label": "DIAGRAMACIÓN HABITUAL DEL SERVICIO",
+        "name": "detalle2",
+        "data": "detalle2",
+        "meta": ["searchable", "sortable"]
+    },{
+        "label": "DIAGRAMACIÓN DE LA COBERTURA SOLICITADA",
+        "name": "detalle3",
+        "data": "detalle3",
+        "meta": ["searchable", "sortable"]
+    },{
+        "label": "TAREAS A REALIZAR Y PRODUCCIÓN ESPERADA",
+        "name": "detalle4",
+        "data": "detalle4",
+        "meta": ["searchable", "sortable"]
+    }
+    ]
+}

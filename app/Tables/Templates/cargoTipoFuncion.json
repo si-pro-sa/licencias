@@ -1,0 +1,35 @@
+{
+    "routePrefix": "api.cargo-tipo-funcion",
+    "crtNo": true,
+    "comparisonOperator": "LIKE",
+    "cache": true,
+    "buttons": [
+        {
+            "type" : "row",
+            "icon": "bell",
+            "class": "has-text-purple",
+            "event": "custom",
+            "label" : "texto boton",
+            "confirmation" : true,
+            "message" : "un mensaje"
+
+        },
+        {
+            "type" : "global",
+            "icon": "bell",
+            "class": "has-text-purple"
+        }
+    ],
+    "columns": [{
+        "label": "ID",
+        "name": "id",
+        "data": "id",
+        "meta": ["searchable", "sortable"]
+    },{
+        "label": "Nombre del Grupo",
+        "name": "cargotipo_funcion",
+        "data": "cargotipo_funcion",
+        "meta": ["searchable", "sortable"]
+    }
+    ]
+}

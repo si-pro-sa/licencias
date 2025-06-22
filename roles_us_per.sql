@@ -1,0 +1,2 @@
+SELECT idusuario, nombreusuario,idagente, clave, rr.name, rr.display_name
+	FROM sistema.usuario as uu left join sistema.role_user as ru on ru.user_id = uu.idusuario inner join sistema.roles as rr on rr.id = ru.role_id where uu.nombreusuario='gperez';
