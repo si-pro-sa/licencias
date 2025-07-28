@@ -75,7 +75,6 @@ wait_for_db() {
 }
 
 eliminar_database() {
-    backup_path_in_container="/var/lib/postgresql/rrhh.backup"
     echo "Eliminando la base de datos ${BACKUP_DB}..."
     # Wait for PostgreSQL to be ready
     echo "Verificando que el contenedor de PostgreSQL esté listo..."
@@ -96,7 +95,7 @@ eliminar_database() {
         exit 1
     else
         echo "Base de datos ${BACKUP_DB} eliminada exitosamente."
-    fi   
+    fi
 }
 
 # Función para restaurar la base de datos
@@ -110,16 +109,21 @@ restore_database() {
     done
 
     # Set the correct path for pg_restore based on the operating system
-    backup_path_in_container="/var/lib/postgresql/rrhh.backup"  # Default path inside the container
+    backup_path_in_container="/var/lib/postgresql/rrhh.backup"
+
+    # Verify backup file exists in container
+    echo "Verificando que el archivo de backup existe en el contenedor..."
     if [ "${os}" = "Windows" ]; then
-        # In Windows, adjust the path as necessary, keeping in mind Docker volume mappings
-        backup_path_in_container="/var/lib/postgresql/rrhh.backup"
+        ${WINPTY} docker exec licencias-db bash -c 'ls -la /var/lib/postgresql/'
+    else
+        docker exec licencias-db ls -la /var/lib/postgresql/
     fi
 
     # Using WINPTY for Docker commands on Windows
     if [ "${os}" = "Windows" ]; then
         ${WINPTY} docker exec -it licencias-db psql -U root -d postgres -c "Create Database rrhh;"
-        ${WINPTY} docker exec -it licencias-db pg_restore --no-acl --no-owner -v -U root -d rrhh "${backup_path_in_container}"
+        # Use bash -c with single quotes to prevent path conversion
+        ${WINPTY} docker exec -it licencias-db bash -c 'pg_restore --no-acl --no-owner -v -U root -d rrhh /var/lib/postgresql/rrhh.backup'
     else
         docker exec -it licencias-db psql -U root -d postgres -c "Create Database rrhh;"
         docker exec -i licencias-db pg_restore --no-acl --no-owner -v -U root -d rrhh "${backup_path_in_container}"
