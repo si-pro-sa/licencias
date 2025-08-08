@@ -1,4 +1,5 @@
-FROM php:8.1-fpm
+# Use PHP 8.2 instead of 8.1
+FROM php:8.2-fpm
 
 # There was an error installing this container so I had to run docker builder prune and then rebuild the container
 # Clear the package cache and update the GPG keys
@@ -57,14 +58,15 @@ COPY . /var/www
 # Install NPM packages
 RUN /bin/bash -c "source ~/.nvm/nvm.sh && npm install"
 
-# Intall Composer requirements
+# Install Composer requirements
 RUN composer install --no-scripts
 
 # Change ownership for the storage and bootstrap/cache directories
 RUN chown -R www-data:www-data /var/www
-RUN chown -R 777 ./
+RUN chmod -R 777 ./
 RUN /bin/bash -c "source ~/.nvm/nvm.sh && npm run prod"
-# Expose port 80
+
+# Expose ports
 EXPOSE 80
 EXPOSE 3000
 EXPOSE 8080
