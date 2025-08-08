@@ -1,7 +1,6 @@
 /node_modules
 /public/hot
 /public/storage
-/public/*
 /storage/*.key
 /vendor
 .env
@@ -16,4 +15,4 @@ yarn-error.log
 # OR, if you're using the default config
 /cypress/screenshots
 /cypress/videos
-ssh siprrhh@172.16.73.111 -p 28232
+rrhh.backup
